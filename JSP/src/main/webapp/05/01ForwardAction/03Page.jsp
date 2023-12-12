@@ -32,14 +32,14 @@
 	System.out.println("===================== ===========");
 	
 	
-	//Redirect
-	response.sendRedirect("03Page.jsp");
-	
-
-
-
-
+	//forwarding
 %>
+
+
+	<!-- forward ActionTag -->
+	<jsp:forward page="04Page.jsp">
+	<jsp:param name="03page" value="03page로부터 전달되는 값입니다." />
+	</jsp:forward>
 
 
 

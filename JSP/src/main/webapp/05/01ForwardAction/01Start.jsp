@@ -11,11 +11,9 @@
 
 
 <!--
-	Redirect 방식 페이지요청
-	response.sendRedirect(경로)
-	새로운 request 요청 경로를 전달함으로써 기존 request 값은 제거
-	URL정보도 최종 요청한 경로로 지정
-	
+	forward 방식 페이지요청
+	request값 유지한 채 또 다른 URI 경로로 이동
+	주소창의 URL경로는 유지된다
 -->
 
 
