@@ -38,10 +38,28 @@
 		
 		System.out.println("[Connected] : " + conn);
 		
+		// Oracle에서는 sequence를 만들어서 이렇게 표현했음.
+		/* pstmt = conn.prepareStatement("insert into tbl_board values(board_seq.NEXTVAL,?,?,?)"); */
+		
+		// 이전에 작성했던 code
+		/* pstmt = conn.prepareStatement("insert into tbl_board values(?,?,?,?)"); */
+		pstmt = conn.prepareStatement("insert into `jspdb`.`tbl_board` (`title`, `writer`,`content`) values(?,?,?)");
+		/* pstmt.setInt(1, 10); */
+		pstmt.setString(1, "title1");
+		pstmt.setString(2, "writer1");
+		pstmt.setString(3, "content1");
+		int result = pstmt.executeUpdate();
+		if(result > 0) {
+			System.out.println("INSERT성공!!");
+		}
+		
+		
 		
 	} catch (Exception e) {
 		e.printStackTrace();
 	} finally {
+		try{ pstmt.close();}catch(Exception e){}
+		try{ conn.close();}catch(Exception e){}
 		
 	}
 

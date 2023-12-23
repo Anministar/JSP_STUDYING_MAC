@@ -9,6 +9,14 @@
 <body>
 
 
+
+<jsp:useBean id="boardDto" class="Ch06.BoardDto" scope="page" />
+<jsp:setProperty name="boardDto" property="*" />
+
+
+
+
+
 <%@page import="java.sql.*, java.util.*, java.lang.ClassLoader" %>
 <%
 
@@ -38,10 +46,28 @@
 		
 		System.out.println("[Connected] : " + conn);
 		
+		// Oracle에서는 sequence를 만들어서 이렇게 표현했음.
+		/* pstmt = conn.prepareStatement("insert into tbl_board values(board_seq.NEXTVAL,?,?,?)"); */
+		
+		// 이전에 작성했던 code
+		/* pstmt = conn.prepareStatement("insert into tbl_board values(?,?,?,?)"); */
+		pstmt = conn.prepareStatement("insert into `jspdb`.`tbl_board` (`title`, `writer`,`content`) values(?,?,?)");
+		/* pstmt.setInt(1, 10); */
+		pstmt.setString(1, boardDto.getTitle());
+		pstmt.setString(2, boardDto.getWriter());
+		pstmt.setString(3, boardDto.getContent());
+		int result = pstmt.executeUpdate();
+		if(result > 0) {
+			System.out.println("INSERT성공!!");
+		}
+		
+		
 		
 	} catch (Exception e) {
 		e.printStackTrace();
 	} finally {
+		try{ pstmt.close();}catch(Exception e){}
+		try{ conn.close();}catch(Exception e){}
 		
 	}
 
