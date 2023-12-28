@@ -69,8 +69,9 @@
 			fin = new FileInputStream(file);
 			ZipEntry zip = new ZipEntry(file.getName().toString()); // 파일이름만 ZipEntry에 넣어줌. 그걸 zip과 연결
 			zout.putNextEntry(zip); // zip이 참조하는 ZipEntry 객체의 첫번째 파일의 이름 putNextEntry로 zip 파일 안에 넣게 됨.
+									// 파일 열기
 			
-			// 그리고 내용들을 아래 코드로 넣어줌.
+			// 그리고 내용들을 아래 코드로 넣어줌. (== 내용 넣기)
 			while(true) {
 				int data = fin.read();
 				if(data == -1) {
@@ -79,7 +80,8 @@
 				zout.write((byte)data);
 				
 			}
-			zout.closeEntry();		// 내용을 다 넣었으면 Entry를 닫아주는 코
+			zout.closeEntry();		// 내용을 다 넣었으면 Entry를 닫아주는 코드
+									// 파일 닫기
 			fin.close();
 			
 			
