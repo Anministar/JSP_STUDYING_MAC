@@ -13,6 +13,7 @@
 
 	session.setAttribute("ID", "example@example.com");
 	session.setAttribute("PW", "1111");
+	session.setMaxInactiveInterval(10);
 	
 	request.setAttribute("ID2", "example2@example.com");
 	request.setAttribute("PW2", "2222");
