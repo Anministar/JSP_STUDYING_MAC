@@ -15,9 +15,11 @@
 		<input type="checkbox" name=idchk /> ID저장
 		<input type="checkbox" name=pwdchk /> PW저장<br>
 		<input type="submit" value="로그인" /> 
-		
-	
 	</form>
+	
+
+	
+	
 
 
 </body>
