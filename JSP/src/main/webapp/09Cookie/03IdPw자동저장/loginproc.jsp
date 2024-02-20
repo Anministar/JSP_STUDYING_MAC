@@ -25,25 +25,41 @@
 	
 	Cookie id = new Cookie("userid", userid);
 	Cookie pw = new Cookie("pwd", pwd);
+	
+	response.addCookie(id);
+	response.addCookie(pw);
 
-	if(idchk != null) {
-		Cookie ichk = new Cookie("idchk", idchk);	
-	} else {
+	if(idchk != null) {		// id저장체크가 되어있다면
+		Cookie ichk = new Cookie("idchk", idchk);		// id체크값(on문자열)을 저장한 쿠키 생성
+		response.addCookie(ichk);			// 클라이언트로 id체크 쿠키 전달
+	} else {				// id저장체크가 안되어 있다면
 		// 기존의 idchk를 찾아서 제거하는 작업
+		Cookie[] cookies = request.getCookies();
+		for(Cookie cookie : cookies) {
+			if(cookie.getName().equals("idchk")) {
+				cookie.setMaxAge(0);		// 쿠키 유지시간 0초
+				response.addCookie(cookie);	// 클라이언트로 0초 쿠키 전달
+			}
+		}
 	}
 	
 	if(pwdchk != null) {
 		Cookie pchk = new Cookie("pwdchk", pwdchk);	
+		response.addCookie(pchk);
 	} else {
 		// 기존의 pwdchk를 찾아서 제거하는 작업
+		Cookie[] cookies = request.getCookies();
+		for(Cookie cookie : cookies) {
+			if(cookie.getName().equals("pwdchk")) {
+				cookie.setMaxAge(0);
+				response.addCookie(cookie);
+			}
+		}
 	}
 	
+	response.sendRedirect("main.jsp");
 	
 	
-	response.addCookie(id);
-	response.addCookie(pw);
-	response.addCookie(ichk);
-	response.addCookie(pchk);
 	%>
 	
 

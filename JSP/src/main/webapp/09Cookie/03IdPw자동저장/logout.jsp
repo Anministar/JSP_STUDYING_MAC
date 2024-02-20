@@ -7,6 +7,22 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:useBean id="sessionDto" class="Ch08.SessionDto" scope="application" />
+
+
+
+<%
+
+	out.println("<script>");
+	out.println("alert('로그아웃 하였습니다.')");
+	out.println("location.href='login.jsp'");
+	out.println("</script>");
+
+%>
+
+
+
+
 
 </body>
 </html>

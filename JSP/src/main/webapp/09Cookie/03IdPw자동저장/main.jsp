@@ -5,9 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+
 </head>
 <body>
+<h1>MAIN</h1>
 
+
+<a href="logout.jsp">로그아웃</a>
 
 </body>
+
+
 </html>
