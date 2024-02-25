@@ -58,6 +58,7 @@
 <hr>
 [NULL] empty null : ${empty null } <br>
 [NULL] empty null : ${empty list1 } <br>
+[NULL] empty null : ${list1==null} <br>
 [NULL] empty null : ${empty list2 } <br>
 [NULL] null==0 : ${null==0 } <br>
 
