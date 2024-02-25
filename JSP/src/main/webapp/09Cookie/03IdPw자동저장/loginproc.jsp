@@ -28,10 +28,10 @@
 	
 	
 	// DB로 부터 받은 패스워드 (가정)
-	String salt = BC.gensalt();
-	String dbpw = BC.hashpw("1234", salt);
+	/* String salt = BC.gensalt(); */
+	String dbpw = BC.hashpw("1234", BC.gensalt());
 	
-	pwd = BC.hashpw(pwd, salt);
+	/* pwd = BC.hashpw(pwd, salt); */
 	// 첫번째 인자 : 암호화할 password를 전달
 	// 두번째 인자(genaratesale()) : Salt값 == 패스워드의 암호화 복잡성을 증가시키기 위한 코드
 	// salt값을 이용해서 암호화(해싱)시키는데 이를 원문으로 돌릴 수 없음.
@@ -46,14 +46,13 @@
 	// 이때 pwd는 pwd = BC.hashpw(pwd, salt) 이게 아니고,
 	// request.getParameter("pwd") 여기서 받아온 "pwd 원문"이여야 함.
 	
-	/* if(BCrypt.checkpw(pwd, dbpw)) { 
-		response.sendRedirect("login.jsp");
+	if(!BC.checkpw(pwd, dbpw)) { 
+		// 만약 db에 있는 해싱된 비밀번호와 일치하지 않는다면
+		// login.jsp로 sendRedirect형태로 전달하고 함수를 종료
+		response.sendRedirect("login.jsp");	
 		return ;
-	} */
-	if(!pwd.equals(dbpw)) {
-		response.sendRedirect("login.jsp");
-		return ;
-	}
+	} 
+	
 	
 	
 	
