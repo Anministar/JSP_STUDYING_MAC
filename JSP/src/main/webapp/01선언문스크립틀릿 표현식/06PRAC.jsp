@@ -8,7 +8,18 @@
 </head>
 <body>
 
+<style>
+table {
+	border : 1px solid;
+}
+td {
+	width : 50px;
+	height : 50px;
+	border : 1px solid;
+	text-align : center;
 
+}
+</style>
 
 
 <!-- 
@@ -17,5 +28,50 @@
 
 
  -->
+ 
+ 
+ <%
+ 	java.util.Scanner sc =  new java.util.Scanner(System.in);
+ 	System.out.println("단 입력 : ");
+ 	int dan = sc.nextInt();
+ 	int row = 10;
+ 	int col = 5; 		
+ 	%>
+
+ <%
+ out.print("<table>");
+ for(int i = 0; i < row; i++) {
+	 out.print("<tr>");
+	 
+	 out.print("<td>");
+	 out.print(dan);
+	 out.print("</td>");
+	 
+	 out.print("<td>");
+	 out.print("X");
+	 out.print("</td>");
+	 
+	 out.print("<td>");
+	 out.print(i);
+	 out.print("</td>");
+	 
+	 out.print("<td>");
+	 out.print("=");
+	 out.print("</td>");
+	 
+	 out.print("<td>");
+	 out.print(dan * i);
+	 out.print("</td>");
+	 
+	 out.print("</tr>");
+ }
+ out.print("</table>");
+ %>
+ 
+	
+ 
+ 
+ 
+ 
 </body>
 </html>

@@ -13,10 +13,13 @@
 
 <%
 
-	out.println("<script>");
+	/* out.println("<script>");
 	out.println("alert('로그아웃 하였습니다.')");
 	out.println("location.href='login.jsp'");
-	out.println("</script>");
+	out.println("</script>"); */
+	
+	session.invalidate();
+	response.sendRedirect("login.jsp");
 
 %>
 
