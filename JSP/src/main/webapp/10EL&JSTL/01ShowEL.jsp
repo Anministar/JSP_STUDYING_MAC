@@ -25,7 +25,14 @@
 	obj.setAddr("대구");
 	// 이 상태로 EL태그에 넣을 순 없고, session, pageContext, Parameter안에 넣어줘야함.
 	request.setAttribute("hong", obj);
-%>
+	
+	
+	// NULL 확인
+	Integer list1[] = null;
+	Integer list2[]	= {1, 2, 3};
+	request.setAttribute("list1", list1);
+	request.setAttribute("list2", list2);
+%>                    
 
 
 [PARAM] USERID : ${param.userid} <br>
@@ -43,6 +50,16 @@
 [OBJECT] HONG : ${hong.name }<br>
 [OBJECT] HONG : ${hong.age }<br>
 [OBJECT] HONG : ${hong.addr }<br>
+<hr>
+<!-- 보통은 문자와 숫자에 대한 연산을 문자열이라고 생각해 이어붙이는 형태  -->
+[ETC] 기타연산 : <%=1+"1" %> <br>
+<!-- EL태그는 문자열안에 숫자가 있다면 이를 숫자로 해석 후에 연산한 값을 담아냄.  -->
+[ETC] 기타연산 : ${1 + "1" } <br>
+<hr>
+[NULL] empty null : ${empty null } <br>
+[NULL] empty null : ${empty list1 } <br>
+[NULL] empty null : ${empty list2 } <br>
+[NULL] null==0 : ${null==0 } <br>
 
 
 
